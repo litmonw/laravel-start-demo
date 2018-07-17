@@ -21,6 +21,7 @@ class UsersController extends Controller
     /**
      * @param Request $request
      * 处理表单数据提交方法
+     * @return array
      */
     public function store(Request $request)
     {
@@ -37,6 +38,9 @@ class UsersController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
+
+        // 注册成功后自动登录
+        Auth::login($user);
 
         session()->flash('success', '欢迎, 您将在这里开启一段新的旅程~');
         // 这里是一个 [约定优于配置] 的体现， $user 是 User 模型对象的实例

@@ -20,3 +20,9 @@ Route::get('signup', 'UsersController@create')->name('signup');
 // 新增的 resource 方法将遵从 RESTful 架构为用户资源生成路由。
 // 该方法接收两个参数，第一个参数为资源名称，第二个参数为控制器名称
 Route::resource('users', 'UsersController');
+
+
+// 会话控制器
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
