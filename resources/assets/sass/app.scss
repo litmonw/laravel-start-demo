@@ -68,6 +68,13 @@ p {
   }
 }
 
+#logout {
+  cursor: default;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 /* sidebar */
 
 aside {
@@ -148,19 +155,4 @@ footer {
     font-size: 13px;
     font-weight: bold;
   }
-}
-
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
-}
-
-.panel {
-  margin-top: 50px;
 }
