@@ -1,7 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: dsyal
- * Date: 2018/7/5
- * Time: 下午9:58
- */
+@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(session()->has($msg))
+        <div class="flash-message">
+            <p class="alert alert-{{ $msg }}">
+                {{ session()->get($msg) }}
+            </p>
+        </div>
+    @endif
+@endforeach
