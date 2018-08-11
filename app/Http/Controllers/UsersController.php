@@ -36,7 +36,10 @@ class UsersController extends Controller
     // Laravel 会自动解析定义在控制器方法（变量名匹配路由片段）中的 Eloquent 模型类型声明
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $statuses = $user->statuses()
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(30);
+        return view('users.show', compact('user', 'statuses'));
     }
 
     // 表单数据处理
