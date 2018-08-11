@@ -28,7 +28,7 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 
 // 密码重设
-Route::get('password/reset', 'Auth\ForgotPasswordController@AshowLinkRequestForm')->name('password.request');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
@@ -36,3 +36,11 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 // 微博相关的操作 传参 only 指定某几个动作的路由
 Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
+
+// 关注人列表 和 粉丝列表
+Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
+Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
+
+// 关注用户和取消用户
+Route::post('/users/followers/{user}', 'FollowersController@store')->name('followers.store');
+Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('followers.destroy');
